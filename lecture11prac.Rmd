@@ -7,13 +7,13 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## GitHub Documents
+## Lecture 11 Practice
 
-This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
+Structural Bioinformatics Practice
 
 ## Multiple Structure Alignment
 
-Requesting the A chain of selected PDBs:
+Downloading/requesting the specific chains of selected PDBs:
 
 ```{r multi pdb}
 library(bio3d)
@@ -21,12 +21,14 @@ ids <- c("1TND_B","1AGR_A","1TAG_A","1GG2_A","1KJY_A","4G5Q_A")
 files <- get.pdb(ids, split = TRUE)
 ```
 
-## Including Plots
+Aligning the PDBs:
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r align}
+pdbs <- pdbaln(files, fit=TRUE)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Viewing the alignments
+```{r align view}
+pdbs
+```
+
