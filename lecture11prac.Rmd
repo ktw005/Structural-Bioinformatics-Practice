@@ -15,7 +15,7 @@ Structural Bioinformatics Practice
 
 Downloading/requesting the specific chains of selected PDBs:
 
-```{r multi pdb}
+```{r multi pdb, warning=FALSE}
 library(bio3d)
 ids <- c("1TND_B","1AGR_A","1TAG_A","1GG2_A","1KJY_A","4G5Q_A")
 files <- get.pdb(ids, split = TRUE)

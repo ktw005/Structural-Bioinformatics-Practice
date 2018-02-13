@@ -17,18 +17,6 @@ ids <- c("1TND_B","1AGR_A","1TAG_A","1GG2_A","1KJY_A","4G5Q_A")
 files <- get.pdb(ids, split = TRUE)
 ```
 
-    ## Warning in get.pdb(ids, split = TRUE): ./1TND.pdb exists. Skipping download
-
-    ## Warning in get.pdb(ids, split = TRUE): ./1AGR.pdb exists. Skipping download
-
-    ## Warning in get.pdb(ids, split = TRUE): ./1TAG.pdb exists. Skipping download
-
-    ## Warning in get.pdb(ids, split = TRUE): ./1GG2.pdb exists. Skipping download
-
-    ## Warning in get.pdb(ids, split = TRUE): ./1KJY.pdb exists. Skipping download
-
-    ## Warning in get.pdb(ids, split = TRUE): ./4G5Q.pdb exists. Skipping download
-
     ## 
       |                                                                       
       |                                                                 |   0%
