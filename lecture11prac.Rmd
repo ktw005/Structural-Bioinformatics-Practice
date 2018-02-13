@@ -32,3 +32,10 @@ Viewing the alignments
 pdbs
 ```
 
+Inspect alignments for gaps:
+```{r gaps}
+gaps <- gap.inspect(pdbs$ali)
+head(gaps$f.inds)
+pdbs$ali[, gaps$f.inds]
+```
+
