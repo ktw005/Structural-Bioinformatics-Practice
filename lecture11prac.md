@@ -472,3 +472,64 @@ pdbs$ali[, gaps$f.inds]
     ## ./split_chain/1GG2_A.pdb "A"    "V"    "T"    "D"    "V"    "I"    "I"   
     ## ./split_chain/1KJY_A.pdb "A"    "V"    "T"    "D"    "V"    "I"    "I"   
     ## ./split_chain/4G5Q_A.pdb "A"    "V"    "T"    "D"    "V"    "I"    "I"
+
+Basic Structure Analysis
+------------------------
+
+Calculate sequence identity:
+
+``` r
+seqidentity(pdbs)
+```
+
+    ##                          ./split_chain/1TND_B.pdb ./split_chain/1AGR_A.pdb
+    ## ./split_chain/1TND_B.pdb                    1.000                    0.693
+    ## ./split_chain/1AGR_A.pdb                    0.693                    1.000
+    ## ./split_chain/1TAG_A.pdb                    1.000                    0.694
+    ## ./split_chain/1GG2_A.pdb                    0.690                    0.997
+    ## ./split_chain/1KJY_A.pdb                    0.696                    0.994
+    ## ./split_chain/4G5Q_A.pdb                    0.696                    0.997
+    ##                          ./split_chain/1TAG_A.pdb ./split_chain/1GG2_A.pdb
+    ## ./split_chain/1TND_B.pdb                    1.000                    0.690
+    ## ./split_chain/1AGR_A.pdb                    0.694                    0.997
+    ## ./split_chain/1TAG_A.pdb                    1.000                    0.691
+    ## ./split_chain/1GG2_A.pdb                    0.691                    1.000
+    ## ./split_chain/1KJY_A.pdb                    0.697                    0.991
+    ## ./split_chain/4G5Q_A.pdb                    0.697                    0.994
+    ##                          ./split_chain/1KJY_A.pdb ./split_chain/4G5Q_A.pdb
+    ## ./split_chain/1TND_B.pdb                    0.696                    0.696
+    ## ./split_chain/1AGR_A.pdb                    0.994                    0.997
+    ## ./split_chain/1TAG_A.pdb                    0.697                    0.697
+    ## ./split_chain/1GG2_A.pdb                    0.991                    0.994
+    ## ./split_chain/1KJY_A.pdb                    1.000                    1.000
+    ## ./split_chain/4G5Q_A.pdb                    1.000                    1.000
+
+Calculate RMSD:
+
+``` r
+rd <- rmsd(pdbs)
+```
+
+    ## Warning in rmsd(pdbs): No indices provided, using the 314 non NA positions
+
+``` r
+rd
+```
+
+    ##       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]
+    ## [1,] 0.000 1.042 1.281 1.651 2.098 2.367
+    ## [2,] 1.042 0.000 1.628 1.811 1.949 2.244
+    ## [3,] 1.281 1.628 0.000 1.730 1.840 1.885
+    ## [4,] 1.651 1.811 1.730 0.000 1.901 2.032
+    ## [5,] 2.098 1.949 1.840 1.901 0.000 1.225
+    ## [6,] 2.367 2.244 1.885 2.032 1.225 0.000
+
+Clustering and plot:
+
+``` r
+hc <- hclust(as.dist(rd))
+grps <- cutree(hc, k=3)
+hclustplot(hc, k=3)
+```
+
+![](lecture11prac_files/figure-markdown_github/clustering-1.png)

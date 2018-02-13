@@ -39,3 +39,20 @@ head(gaps$f.inds)
 pdbs$ali[, gaps$f.inds]
 ```
 
+## Basic Structure Analysis
+Calculate sequence identity:
+```{r seq identity}
+seqidentity(pdbs)
+```
+Calculate RMSD:
+```{r RMSD}
+rd <- rmsd(pdbs)
+rd
+```
+Clustering and plot:
+```{r clustering}
+hc <- hclust(as.dist(rd))
+grps <- cutree(hc, k=3)
+hclustplot(hc, k=3)
+```
+
