@@ -6,22 +6,44 @@ GitHub Documents
 
 This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
 
-Including Code
---------------
+Multiple Structure Alignment
+----------------------------
 
-You can include R code in the document as follows:
+Requesting the A chain of selected PDBs:
 
 ``` r
-summary(cars)
+library(bio3d)
+ids <- c("1TND_B","1AGR_A","1TAG_A","1GG2_A","1KJY_A","4G5Q_A")
+files <- get.pdb(ids, split = TRUE)
 ```
 
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
+    ## Warning in get.pdb(ids, split = TRUE): ./1TND.pdb exists. Skipping download
+
+    ## Warning in get.pdb(ids, split = TRUE): ./1AGR.pdb exists. Skipping download
+
+    ## Warning in get.pdb(ids, split = TRUE): ./1TAG.pdb exists. Skipping download
+
+    ## Warning in get.pdb(ids, split = TRUE): ./1GG2.pdb exists. Skipping download
+
+    ## Warning in get.pdb(ids, split = TRUE): ./1KJY.pdb exists. Skipping download
+
+    ## Warning in get.pdb(ids, split = TRUE): ./4G5Q.pdb exists. Skipping download
+
+    ## 
+      |                                                                       
+      |                                                                 |   0%
+      |                                                                       
+      |===========                                                      |  17%
+      |                                                                       
+      |======================                                           |  33%
+      |                                                                       
+      |================================                                 |  50%
+      |                                                                       
+      |===========================================                      |  67%
+      |                                                                       
+      |======================================================           |  83%
+      |                                                                       
+      |=================================================================| 100%
 
 Including Plots
 ---------------

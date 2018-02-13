@@ -11,12 +11,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
 
-## Including Code
+## Multiple Structure Alignment
 
-You can include R code in the document as follows:
+Requesting the A chain of selected PDBs:
 
-```{r cars}
-summary(cars)
+```{r multi pdb}
+library(bio3d)
+ids <- c("1TND_B","1AGR_A","1TAG_A","1GG2_A","1KJY_A","4G5Q_A")
+files <- get.pdb(ids, split = TRUE)
 ```
 
 ## Including Plots
