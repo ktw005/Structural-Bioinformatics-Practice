@@ -7,4 +7,31 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 
+```{r}
+library(bio3d)
+library(devtools)
+devtools::install_bitbucket("Grantlab/bio3d", subdir="ver_devel/bio3d/")
+```
+
+## get adenylate kinase stuctures
+```{r Adk}
+aa <- get.seq("1ake_A")
+
+b <- hmmer(aa)
+```
+
+## Plot search results
+```{r}
+hits <- plot(b)
+```
+
+## Parse and align structures'
+```{r parse/align}
+files <- get.pdb(hits$pdb.id, path = "pdbs", split = TRUE, gzip = TRUE)
+
+pdbs <- pdbaln(files)
+
+ids <- basename.pdb(pdbs$id)
+
+plot(pdbs, labels=ids)
+```
