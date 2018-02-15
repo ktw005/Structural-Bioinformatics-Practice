@@ -18,7 +18,7 @@ devtools::install_bitbucket("Grantlab/bio3d", subdir="ver_devel/bio3d/")
 
     ## '/Library/Frameworks/R.framework/Resources/bin/R' --no-site-file  \
     ##   --no-environ --no-save --no-restore --quiet CMD INSTALL  \
-    ##   '/private/var/folders/qy/7_f0t6md4xd25wh5v225pfjwzrx9r3/T/RtmpDzoPur/devtoolsc431a21d559/Grantlab-bio3d-64bda8da2ef0/ver_devel/bio3d'  \
+    ##   '/private/var/folders/qy/7_f0t6md4xd25wh5v225pfjwzrx9r3/T/RtmpA9Bx0w/devtoolsd3a409f500c/Grantlab-bio3d-64bda8da2ef0/ver_devel/bio3d'  \
     ##   --library='/Users/ktw005/Library/R/3.4/library' --install-tests
 
     ## 
@@ -324,3 +324,38 @@ plot(pdbs, labels=ids)
 ```
 
 ![](class11-section6_files/figure-markdown_github/parse/align-1.png)
+
+Sequence consercation analysis
+------------------------------
+
+``` r
+cons <- conserv(pdbs, method="entropy22")
+
+sse <- pdbs2sse(pdbs, ind=1, rm.gaps=FALSE)
+```
+
+    ## Extracting SSE from pdbs$sse attribute
+
+``` r
+plotb3(cons, sse=sse, ylab="Sequence entropy")
+```
+
+![](class11-section6_files/figure-markdown_github/sequence-1.png)
+
+Annotate pdb structures
+-----------------------
+
+``` r
+anno <- pdb.annotate(ids)
+```
+
+    ## Warning in pdb.annotate(ids): ids should be standard 4 character PDB-IDs:
+    ## trying first 4 characters...
+
+``` r
+print(unique(anno$source))
+```
+
+    ## [1] "Escherichia coli"          "Vibrio cholerae"          
+    ## [3] "Photobacterium profundum"  "Burkholderia pseudomallei"
+    ## [5] "Francisella tularensis"

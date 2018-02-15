@@ -35,3 +35,19 @@ ids <- basename.pdb(pdbs$id)
 
 plot(pdbs, labels=ids)
 ```
+
+## Sequence consercation analysis
+```{r sequence}
+cons <- conserv(pdbs, method="entropy22")
+
+sse <- pdbs2sse(pdbs, ind=1, rm.gaps=FALSE)
+
+plotb3(cons, sse=sse, ylab="Sequence entropy")
+```
+
+## Annotate pdb structures
+```{r annotate}
+anno <- pdb.annotate(ids)
+print(unique(anno$source))
+```
+
